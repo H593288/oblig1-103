@@ -11,6 +11,7 @@ tekst=$(echo "$tekst" | sed -z 's/\</\n/g')
 tekst=$(echo "$tekst" | sed -z 's/\>/\n/g')
 # Går gjennom linjene og når den møter på en bokstav så hopper den over 
 # Men når den møter på et symbol eller mellomrom så hasher den
+mkdir $1
 while IFS= read -r line
 do
     if [[ "$line" =~ [^[:alpha:]]*[^[:alpha:]] ]];
@@ -24,6 +25,3 @@ do
     fi
 #printf $output
 done <<< "$tekst"
-
-#Printer filen også sletter den etterpå 
-rm output_tekst.txt
